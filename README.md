@@ -34,8 +34,8 @@ mutation createCalculation($planIndicatorId: ID){
       expressions
     }
   }
-}```
-
+}
+```
 ### Исполнить Calculation
 
 ```graphql
@@ -43,4 +43,5 @@ mutation calculate{
   calculate(calculateDataId: "Q2FsY3VsYXRpb25EYXRhVHlwZToyOQ==") {
     response
   }
-}```
+}
+```
