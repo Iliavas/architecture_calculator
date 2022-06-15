@@ -1,37 +1,59 @@
 # Как использовать
 ### Создать Calculation
 ```graphql
-mutation createCalculation($planIndicatorId: ID){
-  newCreateCalculation(
-    planIndicatorId: $planIndicatorId,
-    calculateData: {
-      expressions: [
-        {
-          id: 1,
-          function: SUM,
-          elements: [
-            {
-              type: FIELD,
-              content: 2
-            }
-          ]
+mutation create {
+  createOrUpdateIndicator(calculationData: {
+    fields: [
+      {
+        id: 2,
+        fieldId: "QXZhaWxhYmxlRmllbGROYW1lOjYyOWRkMWI0NTA2MjI4Yjg5ODA4Mzk1ZQ==",
+        function: "SUM",
+        countIf: {
+          value: 1,
+          field: "QXZhaWxhYmxlRmllbGROYW1lOjYyOWRkMWI0NTA2MjI4Yjg5ODA4Mzk1ZQ==",
+          operator: "gt"
         }
-      ],
-      fields: [
-        {
-          id: 2,
-          fieldId: "QXZhaWxhYmxlRmllbGROYW1lOjYyOWRkMWI0NTA2MjI4Yjg5ODA4Mzk1ZQ==",
-          function: "SUM"
-        }
-      ],
-      executeId: 1,
-    },
-    filterFields: [],
-    expressionType: BARE
-  ) {
-    calculation{
+      }
+    ],
+    expressions: [
+      {
+        id: 3,
+        elements: [
+          {
+            content: 2,
+            type: FIELD
+          }
+        ],
+        function: SUM
+      },
+      {
+        id: 1,
+        elements: [
+          {
+            content: 2,
+            type: FIELD
+          },
+          {
+            content: 3,
+            type: FIELD
+          },
+          {
+            content: 5,
+            type:LITERAL
+          }
+        ],
+        function: SUM
+      }
+    ],
+    executeId: 1,
+  }, indicatorData:{
+    name: "name"
+  }) {
+    indicator {
       id,
-      expressions
+      newCalculation{
+        id
+      }
     }
   }
 }
